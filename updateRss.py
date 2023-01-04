@@ -5,11 +5,14 @@ import re
 import datetime
 from bs4 import BeautifulSoup as bs4
 
+# Change These
+HTML_PATH = f'/Users/SEBARRETT/Code/mysite/blogposts/{sys.argv[1]}'
+RSS_PATH = "/Users/SEBARRETT/Code/mysite/blogposts/rss.xml"
+START_LINE = '<atom:link href="https://sethbarrett.xyz/rss.xml" rel="self" type="application/rss+xml"/>'
+
+
 # Takes the html document, uses bs4 to get div element with class blog
-
-
 def getBlogContents() -> tuple[str]:
-    HTML_PATH = f'/Users/SEBARRETT/Code/mysite/blogposts/{sys.argv[1]}'
     with open(HTML_PATH, 'r') as f:
         soup = bs4(f.read(), 'html.parser')
     title = soup.find('div', class_='title').text
@@ -19,10 +22,8 @@ def getBlogContents() -> tuple[str]:
 
 # Adds blog contents to top of channel as a new item
 def addToRss(bc: str) -> None:
-    RSS_PATH = "/Users/SEBARRETT/Code/mysite/blogposts/rss.xml"
     with open(RSS_PATH, 'r') as rss_file:
         rss_xml = rss_file.read()
-    START_LINE = '<atom:link href="https://sethbarrett.xyz/rss.xml" rel="self" type="application/rss+xml"/>'
     channel_start_index = rss_xml.index(START_LINE)
     now = datetime.datetime.now()
     rss_xml = (rss_xml[:channel_start_index+len(START_LINE)] +
