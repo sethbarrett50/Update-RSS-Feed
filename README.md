@@ -26,4 +26,4 @@ python update_rss_feed.py
 
 ## License
 
-This project is released under the Unlicense. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the Unlicense. This means that you are free to use, modify, and distribute the work, even for commercial purposes, without the need to provide attribution. For more information, see the full text of the Unlicense in the License file.
