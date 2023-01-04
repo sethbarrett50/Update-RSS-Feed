@@ -9,7 +9,8 @@ from bs4 import BeautifulSoup as bs4
 
 
 def getBlogContents() -> tuple[str]:
-    with open(f'/Users/SEBARRETT/Code/mysite/blogposts/{sys.argv[1]}', 'r') as f:
+    HTML_PATH = f'/Users/SEBARRETT/Code/mysite/blogposts/{sys.argv[1]}'
+    with open(HTML_PATH, 'r') as f:
         soup = bs4(f.read(), 'html.parser')
     title = soup.find('div', class_='title').text
     contents = re.sub('\n', '', soup.find('div', class_='blog').prettify())
