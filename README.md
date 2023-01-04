@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. Modify the `document_name` and `rss_feed_url` variables in the script to match the desired HTML document and RSS feed.
+1. Modify the `document_name` and `RSS_PATH` variables in the script to match the desired HTML document and RSS feed.
 2. Run the script:
 python update_rss_feed.py
 
